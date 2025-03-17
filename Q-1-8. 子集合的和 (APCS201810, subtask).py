@@ -17,7 +17,6 @@ def main():
 
     post_set = set()
     for i in data[n//2:]:
-        Len = len(post_set)
         for j in list(post_set):
             value = i+j
             if value <= target and value not in post_set:
@@ -37,12 +36,13 @@ def main():
             #     while l+jump < len(pre_list) and i+pre_list[l+jump] <= target:
             #         l+=jump
             #     jump//=2
-            value = pre_list[bisect.bisect(pre_list,target-i)-1] + i
-            if value < target:
-                Max = max(Max, value)
-            if value == target:
-                Max = target
-                return Max
+            if i + pre_list[-1] > Max:
+                value = pre_list[bisect.bisect(pre_list,target-i)-1] + i
+                if value < target:
+                    Max = max(Max, value)
+                if value == target:
+                    Max = target
+                    return Max
         return Max
     print(f())
 main()
