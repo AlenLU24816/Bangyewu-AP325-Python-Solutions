@@ -6,7 +6,7 @@ while y>0:
         ans = (ans*x)%p
         y -= 1
     x = (x**2) % p
-    y//=2
+    y>>=1
 print(ans)
 
 """
